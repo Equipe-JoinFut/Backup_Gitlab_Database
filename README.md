@@ -9,22 +9,22 @@
 
 ## Glossário
 
-| Ordem | Tópico                                          |
-|-------|-------------------------------------------------|
-| 1     | [Testando Requisições utilizando o Postman](#A) |
-|2| [Importanto Requisições Existentes](#B)         |
-|3| [Testando as requisições](#C)                   |
-|4| [Scripts de SQL](#D)                            |
-|5| [Script Linux](#E)                              |
+| Ordem | Tópico                                            |
+|-------|---------------------------------------------------|
+| 1     | [Download do Postman](README.md:21)               |
+|2| [Importanto Requisições Existentes](README.md:27) |
+|3| [Testando as requisições](README.md:76)           |
+|4| [Scripts de SQL](README.md:218)                   |
+|5| [Script Linux](README.md:259)                                  |
 ---
 
-### A) Testando Requisições utilizando o Postman
+### Download do Postman
 
 * Instale o programa Postman [AQUI](https://www.postman.com/downloads/)
 
 ---
 
-### B) Importando Requisições Existentes
+### Importando Requisições Existentes
 
 1) no topo a esquerda do postman tem a opção **import**, clique nele e ele abre uma página para fazer upload dos arquivos
 
@@ -73,7 +73,7 @@ Deve seguir o padrão CRUD
 
 ---
 
-### C) Testando as requisições
+### Testando as requisições
 
 | Tipos de Requisição                                                               |
 |-----------------------------------------------------------------------------------|
@@ -215,7 +215,7 @@ Deve seguir o padrão CRUD
 
 ---
 
-### D) Scripts de SQL
+### Scripts de SQL
 
 * Iremos salvar os Scripts de SQL nesse repositório, junto com os testes de requisições
 * Todos os Scripts devem estar comentados o que cada coisa no Script faz:
@@ -256,7 +256,7 @@ now();
 
 ---
 
-### E) Script Linux
+### Script Linux
 
 * Caso utilize linux, coloque os Script de auxilio para a equipe no diretório **Script_Linux**
 * Devem ser do tipo Shell Script (**.sh**) com os comandos e comentários do que cada um faz.
