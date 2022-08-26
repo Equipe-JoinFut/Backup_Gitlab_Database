@@ -9,13 +9,13 @@
 
 ## Glossário
 
-| Ordem | Tópico                                                                                  |
-|-------|-----------------------------------------------------------------------------------------|
-| 1     | [Testando Requisições utilizando o Postman](#Testando-Requisições-utilizando-o-Postman) |
-|2|[Importanto Requisições Existentes](#Importando-Requisições-Existentes)|
-|3|[Testando as requisições](#Testando-as-requisições)|
-|4|[Scripts de SQL](#Scripts-de-SQL)|
-|5|[Script Linux](#Script-Linux)|
+| Ordem | Tópico                |
+|-------|-----------------------|
+| 1     | [Testando Requisições utilizando o Postman](#Testando) |
+|2|[Importanto Requisições Existentes](#Importando)|
+|3|[Testando as requisições](#requisições)|
+|4|[Scripts de SQL](#SQL)|
+|5|[Script Linux](#Script)|
 ---
 
 ### Testando Requisições utilizando o Postman
