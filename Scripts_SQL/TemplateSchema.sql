@@ -1,8 +1,7 @@
-------------------------------------------
--- SCRIPT DE CRIAÇÃO DO SCHEMA DE EXEMPLO
-------------------------------------------
+----------------------------------
+-- SCHEMAS CRIADOS PARA O PROJETO
+----------------------------------
 
--- Criação do schema examples caso ele não exista no database joinfut
+CREATE SCHEMA IF NOT EXISTS personas;
+CREATE SCHEMA IF NOT EXISTS informations;
 CREATE SCHEMA IF NOT EXISTS examples;
-
--- Obs: tabela e colunas quem cria é o Sprinboot quando rodado a primeira vez
