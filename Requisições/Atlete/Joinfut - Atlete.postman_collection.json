@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "2e4700fb-ed66-4ea9-8c41-ebbff0a4fabf",
+		"name": "Joinfut - Atlete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13705850"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Create Atlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta completo\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    \r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.idAtlete).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idAtlete\", responseJson.idAtlete)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": 102.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"playStyle\": \"D\",\r\n    \"adress\": {\r\n        \"street\": \"Rua vespaziano pereira\",\r\n        \"houseNumber\": 126,\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"Rio Grande do Sul\",\r\n        \"country\": \"Brasil\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": [\r\n        {\r\n            \"atleteDeceaseName\": \"Catapora\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Atlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca de todos os atletas\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Atlete by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca de Atletas por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.contact.idContact).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idContact\", responseJson.contact.idContact);\r",
+									"\r",
+									"    pm.expect(responseJson.adress.idAdress).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idAdress\", responseJson.adress.idAdress);\r",
+									"\r",
+									"    pm.expect(responseJson.atleteClubs[0].idAtleteClub).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idAtleteClub\", responseJson.atleteClubs[0].idAtleteClub);\r",
+									"\r",
+									"    pm.expect(responseJson.atleteDeceases[0].idAtleteDecease).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idAtleteDecease\", responseJson.atleteDeceases[0].idAtleteDecease);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/atlete/{{idAtlete}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atlete",
+								"{{idAtlete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Atlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de atualização dos dados do Atleta criado\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
+									"    pm.expect(responseJson.id).to.be.eql(pm.globals.get(\"idAtlete\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteImc\": 3000,\r\n    \"contact\": {\r\n        \"idContact\": {{idContact}},\r\n        \"contactName\": \"John Doe the Second\"\r\n    },\r\n    \"adress\": {\r\n        \"idAdress\": {{idAdress}},\r\n        \"street\": \"Frederico Rubens\"\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"idAtleteClub\": {{idAtleteClub}},\r\n            \"atleteClubName\": \"Guarany\"\r\n        }\r\n    ],\r\n    \"atleteDeceases\": [\r\n        {\r\n            \"idAtleteDecease\": {{idAtleteDecease}},\r\n            \"atleteDeceaseName\": \"Variola\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atlete/{{idAtlete}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atlete",
+								"{{idAtlete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Atlete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/atlete/{{idAtlete}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atlete",
+								"{{idAtlete}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
