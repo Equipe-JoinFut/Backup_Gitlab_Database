@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "b248440d-af9f-4dae-bf01-beda39477144",
+		"name": "Joinfut - User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23250614"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um usuário completo\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    \r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.idUser).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idUser\", responseJson.idUser)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@gmail.com\",\r\n    \"password\": \"128391\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/users",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/users",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"novoEmail@gmail.com\",\r\n    \"password\": \"supersenhanova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
