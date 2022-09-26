@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b248440d-af9f-4dae-bf01-beda39477144",
+		"_postman_id": "284fc627-0bac-4db7-a241-4bf1e437bbf0",
 		"name": "Joinfut - User",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23250614"
+		"_exporter_id": "2887725"
 	},
 	"item": [
 		{
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"teste@gmail.com\",\r\n    \"password\": \"128391\"\r\n}",
+							"raw": "{\r\n    \"email\": \"teste@gmail.com\",\r\n    \"password\": \"128391\",\r\n    \"userType\": \"AT\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
