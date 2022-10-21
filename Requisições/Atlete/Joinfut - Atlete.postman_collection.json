@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f33c2fc2-3909-4cc8-b024-e09da797f293",
+		"_postman_id": "3fb8f574-1948-4438-b957-f0c743c9e9db",
 		"name": "Joinfut - Atlete",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13705850"
+		"_exporter_id": "23250614"
 	},
 	"item": [
 		{
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": 102.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": 102.0,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,6 +188,171 @@
 								"personas",
 								"atlete",
 								"{{idAtlete}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VALIDATIONS",
+			"item": [
+				{
+					"name": "Atlete with exceeding weight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso acima do limite\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": 500.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Atlete with negative weight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso negativo\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": -40.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atlete with exceeding height",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso negativo\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 4.80,\r\n    \"atleteWeight\": 100.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Atlete with negative height",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso negativo\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": -4.80,\r\n    \"atleteWeight\": 100.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
 							]
 						}
 					},
