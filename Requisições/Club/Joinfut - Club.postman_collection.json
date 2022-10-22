@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "7fe9477b-71d2-48a1-b9f9-5dbd7c55214f",
-		"name": "JoinFut - Club",
+		"name": "Joinfut - Club",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,12 +15,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de Criação de um usuário completo\", function () {\r",
+									"pm.test(\"Teste de Criação de um clube completo\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"    \r",
 									"    const responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.idUser).to.be.a(\"number\");\r",
-									"    pm.globals.set(\"idUser\", responseJson.idUser)\r",
+									"    pm.expect(responseJson.idClub).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idClub\", responseJson.idClub)\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -59,8 +59,11 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"pm.test(\"Teste de busca de Clubes por ID\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.adress.idAdress).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idAdress\", responseJson.adress.idAdress);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -97,7 +100,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"pm.test(\"Teste de busca de todos os clubes\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -109,13 +112,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/clubs",
+							"raw": "{{urlLocal}}/personas/clubs?=",
 							"host": [
 								"{{urlLocal}}"
 							],
 							"path": [
 								"personas",
 								"clubs"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": ""
+								}
 							]
 						}
 					},
@@ -123,12 +132,29 @@
 				},
 				{
 					"name": "Update Club",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de atualização dos dados do Clube criado\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
+									"    pm.expect(responseJson.id).to.be.eql(pm.globals.get(\"idClub\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"novoEmail@gmail.com\",\r\n    \"password\": \"supersenhanova\"\r\n}",
+							"raw": "{\r\n    \"corporateName\": \"Palestra Italia\",\r\n    \"fantasyName\": \"Palestra Italia\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -136,7 +162,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
+							"raw": "{{urlLocal}}/personas/club/{{idClub}}?=1",
 							"host": [
 								"{{urlLocal}}"
 							],
@@ -144,6 +170,12 @@
 								"personas",
 								"club",
 								"{{idClub}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -151,11 +183,24 @@
 				},
 				{
 					"name": "Delete Club",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Exclusão de um atleta completo\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
+							"raw": "{{urlLocal}}/personas/club/{{idClub}}?=",
 							"host": [
 								"{{urlLocal}}"
 							],
@@ -163,6 +208,12 @@
 								"personas",
 								"club",
 								"{{idClub}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
 							]
 						}
 					},
