@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "3fb8f574-1948-4438-b957-f0c743c9e9db",
+		"_postman_id": "63f59376-2a78-446b-91f6-98e1acca0a21",
 		"name": "Joinfut - Atlete",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23250614"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -103,9 +102,6 @@
 									"\r",
 									"    pm.expect(responseJson.atleteClubs[0].idAtleteClub).to.be.a(\"number\");\r",
 									"    pm.environment.set(\"idAtleteClub\", responseJson.atleteClubs[0].idAtleteClub);\r",
-									"\r",
-									"    pm.expect(responseJson.atleteDeceases[0].idAtleteDecease).to.be.a(\"number\");\r",
-									"    pm.environment.set(\"idAtleteDecease\", responseJson.atleteDeceases[0].idAtleteDecease);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -124,6 +120,13 @@
 								"personas",
 								"atlete",
 								"{{idAtlete}}"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -176,6 +179,20 @@
 				},
 				{
 					"name": "Delete Atlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Exclusão de um atleta completo\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
