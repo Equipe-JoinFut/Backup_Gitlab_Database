@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "8ad8839e-d548-48a2-9c02-6711c9c9b037",
+		"name": "Joinfut - Athlete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2887725"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Create Athlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta completo\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    \r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.idAthlete).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idAthlete\", responseJson.idAthlete)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"athleteName\": \"John Doe\",\r\n    \"athleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"athleteHeight\": 1.80,\r\n    \"athleteWeight\": 102.0,\r\n    \"athleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"athleteClubs\": [\r\n        {\r\n            \"athleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"athleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"athleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/athletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"athletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Athlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca de todos os atletas\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/athletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"athletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Athlete by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca de Atletas por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.contact.idContact).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idContact\", responseJson.contact.idContact);\r",
+									"\r",
+									"    pm.expect(responseJson.adress.idAdress).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idAdress\", responseJson.adress.idAdress);\r",
+									"\r",
+									"    pm.expect(responseJson.atleteClubs[0].idAtleteClub).to.be.a(\"number\");\r",
+									"    pm.environment.set(\"idAthleteClub\", responseJson.athleteClubs[0].idAthleteClub);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/athlete/{{idAthlete}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"athlete",
+								"{{idAthlete}}"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Atlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de atualização dos dados do Atleta criado\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
+									"    pm.expect(responseJson.id).to.be.eql(pm.globals.get(\"idAthlete\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteImc\": 3000,\r\n    \"contact\": {\r\n        \"idContact\": {{idContact}},\r\n        \"contactName\": \"John Doe the Second\"\r\n    },\r\n    \"adress\": {\r\n        \"idAdress\": {{idAdress}},\r\n        \"streetInfo\": \"Rua Velepito Menezes, 320\"\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"idAtleteClub\": {{idAtleteClub}},\r\n            \"atleteClubName\": \"Guarany\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/athlete/{{idAthlete}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"athlete",
+								"{{idAthlete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Athlete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Exclusão de um atleta completo\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/athlete/{{idAthlete}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"athlete",
+								"{{idAthlete}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VALIDATIONS",
+			"item": [
+				{
+					"name": "Athlete with exceeding weight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso acima do limite\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": 500.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/athletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"athletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Atlete with negative weight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso negativo\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 1.80,\r\n    \"atleteWeight\": -40.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atlete with exceeding height",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso negativo\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": 4.80,\r\n    \"atleteWeight\": 100.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Atlete with negative height",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com peso negativo\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atleteName\": \"John Doe\",\r\n    \"atleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"atleteHeight\": -4.80,\r\n    \"atleteWeight\": 100.0,\r\n    \"atleteImc\": 200,\r\n    \"atleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"atleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"atleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"atleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/atletes",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"atletes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
