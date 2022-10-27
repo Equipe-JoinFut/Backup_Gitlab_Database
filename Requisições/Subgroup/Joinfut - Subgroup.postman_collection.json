@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "04b243da-34c5-4894-ad38-aab9796b3976",
-		"name": "Joinfut - Club",
+		"_postman_id": "5e211e9f-5e77-42d8-9074-99aeb5b3ee81",
+		"name": "Joinfut - Subgroup",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13705850"
 	},
@@ -10,18 +10,18 @@
 			"name": "CRUD",
 			"item": [
 				{
-					"name": "Create Club",
+					"name": "Create Subgroup",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de Criação de um clube completo\", function () {\r",
+									"pm.test(\"Teste de Criação de um subgrupo sem lista de atletas\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"    \r",
 									"    const responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.idClub).to.be.a(\"number\");\r",
-									"    pm.globals.set(\"idClub\", responseJson.idClub)\r",
+									"    pm.expect(responseJson.idSubgroup).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idSubgroup\", responseJson.idSubgroup)\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"corporateName\": \"Palmeiras\",\r\n    \"fantasyName\": \"Palmeiras\",\r\n    \"cnpj\": \"11111111111111\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Av. Palmeiras\",\r\n        \"city\": \"Palmeiras\",\r\n        \"state\": \"SP\"\r\n     }\r\n}",
+							"raw": "{\r\n    \"subgroupName\": \"Teste de Subgrupo\",\r\n    \"club\": {\r\n        \"idClub\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,61 +41,26 @@
 							}
 						},
 						"url": {
-							"raw": "{{urlLocal}}/personas/clubs",
+							"raw": "{{urlLocal}}/selections/subgroups",
 							"host": [
 								"{{urlLocal}}"
 							],
 							"path": [
-								"personas",
-								"clubs"
+								"selections",
+								"subgroups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Read Club by ID",
+					"name": "Read Subgroup by ID",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de busca de Clubes por ID\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"    const responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.adress.idAdress).to.be.a(\"number\");\r",
-									"    pm.environment.set(\"idAdress\", responseJson.adress.idAdress);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
-							"host": [
-								"{{urlLocal}}"
-							],
-							"path": [
-								"personas",
-								"club",
-								"{{idClub}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Read All Clubs",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Teste de busca de todos os clubes\", function () {\r",
+									"pm.test(\"Busca um Subgrupo pelo seu ID\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -107,31 +72,101 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/clubs",
+							"raw": "{{urlLocal}}/selections/subgroup/{{idSubgroup}}",
 							"host": [
 								"{{urlLocal}}"
 							],
 							"path": [
-								"personas",
-								"clubs"
+								"selections",
+								"subgroup",
+								"{{idSubgroup}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Update Club",
+					"name": "Read Subgroup por Clube",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de atualização dos dados do Clube criado\", function () {\r",
+									"pm.test(\"Busca um Subgrupo pelo seu ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroups?idClub=1",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroups"
+							],
+							"query": [
+								{
+									"key": "idClub",
+									"value": "1",
+									"description": "Deve ser passado o ID do clube"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Subgroups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Busca todos os Subgrupos salvos\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroups",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Subgroups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de atualização dos dados do Subgrupo criado\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"\r",
 									"    const responseJson = pm.response.json();\r",
 									"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
-									"    pm.expect(responseJson.id).to.be.eql(pm.globals.get(\"idClub\"));\r",
+									"    pm.expect(responseJson.id).to.be.eql(pm.globals.get(\"idSubgroup\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -143,7 +178,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"corporateName\": \"Palestra Italia\",\r\n    \"fantasyName\": \"Palestra Italia\"\r\n}",
+							"raw": "{\r\n    \"subgroupName\": \"Nome do subgrupo atualizado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -151,27 +186,27 @@
 							}
 						},
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
+							"raw": "{{urlLocal}}/selections/subgroup/{{idSubgroup}}",
 							"host": [
 								"{{urlLocal}}"
 							],
 							"path": [
-								"personas",
-								"club",
-								"{{idClub}}"
+								"selections",
+								"subgroup",
+								"{{idSubgroup}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Club",
+					"name": "Delete Subgroup",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de Exclusão de um atleta completo\", function () {\r",
+									"pm.test(\"Teste de Exclusão de um subgrupo completo\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -183,14 +218,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
+							"raw": "{{urlLocal}}/selections/subgroup/{{idSubgroup}}",
 							"host": [
 								"{{urlLocal}}"
 							],
 							"path": [
-								"personas",
-								"club",
-								"{{idClub}}"
+								"selections",
+								"subgroup",
+								"{{idSubgroup}}"
 							]
 						}
 					},
