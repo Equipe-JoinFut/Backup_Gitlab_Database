@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "3b715162-5e93-4da1-aa47-808cd3f0fa74",
+		"name": "Joinfut - User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19327265"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um usuário completo\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    \r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.idUser).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idUser\", responseJson.idUser)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUser\" : null,\r\n    \"email\": \"teste@gmail.com\",\r\n    \"password\": \"128391\",\r\n    \"idAtlete\" : null,\r\n    \"idClub\" : null,\r\n    \"userType\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/users",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/users",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - add userType",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"novoEmail@gmail.com\",\r\n    \"password\": \"supersenhanova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - add idAtlete",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idAtlete\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - add idClub",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClub\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/user/{{idUser}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"user",
+								"{{idUser}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

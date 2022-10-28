@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "5e211e9f-5e77-42d8-9074-99aeb5b3ee81",
+		"name": "Joinfut - Subgroup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13705850"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Create Subgroup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um subgrupo sem lista de atletas\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    \r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.idSubgroup).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idSubgroup\", responseJson.idSubgroup)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subgroupName\": \"Teste de Subgrupo\",\r\n    \"club\": {\r\n        \"idClub\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroups",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Subgroup by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Busca um Subgrupo pelo seu ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroup/{{idSubgroup}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroup",
+								"{{idSubgroup}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Subgroup por Clube",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Busca um Subgrupo pelo seu ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroups?idClub=1",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroups"
+							],
+							"query": [
+								{
+									"key": "idClub",
+									"value": "1",
+									"description": "Deve ser passado o ID do clube"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Subgroups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Busca todos os Subgrupos salvos\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroups",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Subgroups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de atualização dos dados do Subgrupo criado\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).to.be.a(\"number\");\r",
+									"    pm.expect(responseJson.id).to.be.eql(pm.globals.get(\"idSubgroup\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subgroupName\": \"Nome do subgrupo atualizado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroup/{{idSubgroup}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroup",
+								"{{idSubgroup}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Subgroup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Exclusão de um subgrupo completo\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/selections/subgroup/{{idSubgroup}}",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"selections",
+								"subgroup",
+								"{{idSubgroup}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
