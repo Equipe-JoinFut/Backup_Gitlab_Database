@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8ad8839e-d548-48a2-9c02-6711c9c9b037",
+		"_postman_id": "3fdbaa79-709a-4225-9eaf-cb19bbf7c010",
 		"name": "Joinfut - Athlete",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2887725"
+		"_exporter_id": "13705850"
 	},
 	"item": [
 		{
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"athleteName\": \"John Doe\",\r\n    \"athleteAge\": 14,\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"athleteHeight\": 1.80,\r\n    \"athleteWeight\": 102.0,\r\n    \"athleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"athleteClubs\": [\r\n        {\r\n            \"athleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"athleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"athleteDeceases\": \"Catapora, Varíola\"\r\n}",
+							"raw": "{\r\n    \"athleteName\": \"John Doe\",\r\n    \"dateBirth\": \"2008-02-03\",\r\n    \"athleteHeight\": 1.80,\r\n    \"athleteWeight\": 102.0,\r\n    \"athleteBid\": \"12345678\",\r\n    \"dominantLeg\": \"L\",\r\n    \"position\": \"V\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Rua vespaziano pereira, 230\",\r\n        \"city\": \"Porto Alegre\",\r\n        \"state\": \"RS\"\r\n    },\r\n    \"contact\": {\r\n        \"contactName\": \"John Doe\",\r\n        \"email\": \"JohnDoe@hotmail.com\",\r\n        \"telephone\": \"5551999999999\",\r\n        \"responsibles\": [\r\n            {\r\n                \"contactName\": \"John's Doe Father\",\r\n                \"email\": \"FatherJohnDoe@hotmail.com\",\r\n                \"telephone\": \"5551999999999\"\r\n            }\r\n        ]\r\n    },\r\n    \"athleteClubs\": [\r\n        {\r\n            \"athleteClubName\": \"Internacional\",\r\n            \"beginDate\": \"2020-02-02\",\r\n            \"endDate\": \"2020-10-02\",\r\n            \"currentClub\": false\r\n        },\r\n        {\r\n            \"athleteClubName\": \"Grêmio\",\r\n            \"beginDate\": \"2020-10-03\",\r\n            \"currentClub\": true\r\n        }\r\n    ],\r\n    \"athleteDeceases\": \"Catapora, Varíola\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

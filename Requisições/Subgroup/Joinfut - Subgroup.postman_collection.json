@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5e211e9f-5e77-42d8-9074-99aeb5b3ee81",
+		"_postman_id": "3554ec8d-4b5a-419b-af71-2ade7c1682dd",
 		"name": "Joinfut - Subgroup",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13705850"
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"subgroupName\": \"Teste de Subgrupo\",\r\n    \"club\": {\r\n        \"idClub\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"subgroupName\": \"Teste de Subgrupo\",\r\n    \"club\": {\r\n        \"idClub\": {{idClub}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

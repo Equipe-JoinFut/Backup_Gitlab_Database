@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "483d61ad-e469-45d4-a388-dd1650d72282",
+		"name": "Joinfut-AthleteSubgroup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13705850"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Create AthleteSubgroup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de Criação de um atleta com um subgrupo para uma lista\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    \r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.idAthleteSubgroup).to.be.a(\"number\");\r",
+									"    pm.globals.set(\"idAthleteSubgroup\", responseJson.idAthleteSubgroup)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"athlete\": {\r\n        \"idAthlete\": {{idAthlete}}\r\n    },\r\n    \"subgroup\": {\r\n        \"idSubgroup\": {{idSubgroup}}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlLocal}}/informations/athletes-subgroups",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"informations",
+								"athletes-subgroups"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
