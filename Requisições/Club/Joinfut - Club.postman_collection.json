@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "7fe9477b-71d2-48a1-b9f9-5dbd7c55214f",
+		"_postman_id": "054dd13f-fa4d-4cb4-8202-6057dd93fb76",
 		"name": "Joinfut - Club",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2887725"
 	},
 	"item": [
 		{
@@ -32,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"corporateName\": \"Palmeiras\",\r\n    \"fantasyName\": \"Palmeiras\",\r\n    \"cnpj\": \"11111111111111\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Av. Palmeiras\",\r\n        \"city\": \"Palmeiras\",\r\n        \"state\": \"SP\"\r\n     }\r\n}",
+							"raw": "{\r\n    \"corporateName\": \"Palmeiras\",\r\n    \"fantasyName\": \"Palmeiras\",\r\n    \"cnpj\": \"11111111111111\",\r\n    \"adress\": {\r\n        \"streetInfo\": \"Av. Palmeiras\",\r\n        \"city\": \"Palmeiras\",\r\n        \"state\": \"SP\"\r\n    },\r\n    \"ndaContract\": {\r\n        \"infoNda\": \"LOREM IPSUM BLABLABLABLABLABLABLABLABLABLABLA\",\r\n        \"statusNda\": \"A\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,7 +75,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}?=1",
+							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
 							"host": [
 								"{{urlLocal}}"
 							],
@@ -82,12 +83,6 @@
 								"personas",
 								"club",
 								"{{idClub}}"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -112,19 +107,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/clubs?=",
+							"raw": "{{urlLocal}}/personas/clubs",
 							"host": [
 								"{{urlLocal}}"
 							],
 							"path": [
 								"personas",
 								"clubs"
-							],
-							"query": [
-								{
-									"key": null,
-									"value": ""
-								}
 							]
 						}
 					},
@@ -154,7 +143,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"corporateName\": \"Palestra Italia\",\r\n    \"fantasyName\": \"Palestra Italia\"\r\n}",
+							"raw": "{\r\n    \"corporateName\": \"Palestra Italia\",\r\n    \"fantasyName\": \"Palestra Italia\",\r\n    \"adress\": {\r\n        \"idAdress\": 2,\r\n        \"streetInfo\": \"Av. Babacoide\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -162,7 +151,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}?=1",
+							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
 							"host": [
 								"{{urlLocal}}"
 							],
@@ -170,12 +159,6 @@
 								"personas",
 								"club",
 								"{{idClub}}"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -188,7 +171,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste de Exclusão de um atleta completo\", function () {\r",
+									"pm.test(\"Teste de Exclusão de um clube completo\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -200,7 +183,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{urlLocal}}/personas/club/{{idClub}}?=",
+							"raw": "{{urlLocal}}/personas/club/{{idClub}}",
 							"host": [
 								"{{urlLocal}}"
 							],
@@ -208,12 +191,6 @@
 								"personas",
 								"club",
 								"{{idClub}}"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": ""
-								}
 							]
 						}
 					},
