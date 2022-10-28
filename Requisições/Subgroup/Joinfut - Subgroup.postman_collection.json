@@ -86,7 +86,7 @@
 					"response": []
 				},
 				{
-					"name": "Read Subgroup por Clube",
+					"name": "Read Subgroups by Club",
 					"event": [
 						{
 							"listen": "test",

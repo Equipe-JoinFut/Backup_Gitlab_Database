@@ -157,7 +157,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"atleteImc\": 3000,\r\n    \"contact\": {\r\n        \"idContact\": {{idContact}},\r\n        \"contactName\": \"John Doe the Second\"\r\n    },\r\n    \"adress\": {\r\n        \"idAdress\": {{idAdress}},\r\n        \"streetInfo\": \"Rua Velepito Menezes, 320\"\r\n    },\r\n    \"atleteClubs\": [\r\n        {\r\n            \"idAtleteClub\": {{idAtleteClub}},\r\n            \"atleteClubName\": \"Guarany\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"athleteImc\": 3000,\r\n    \"contact\": {\r\n        \"idContact\": {{idContact}},\r\n        \"contactName\": \"John Doe the Second\"\r\n    },\r\n    \"adress\": {\r\n        \"idAdress\": {{idAdress}},\r\n        \"streetInfo\": \"Rua Velepito Menezes, 320\"\r\n    },\r\n    \"athleteClubs\": [\r\n        {\r\n            \"idAthleteClub\": {{idAthleteClub}},\r\n            \"athleteClubName\": \"Guarany\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

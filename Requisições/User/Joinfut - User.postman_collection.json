@@ -54,7 +54,7 @@
 					"response": []
 				},
 				{
-					"name": "Read User",
+					"name": "Read User by ID",
 					"event": [
 						{
 							"listen": "test",
@@ -111,6 +111,43 @@
 							"path": [
 								"personas",
 								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Users by email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Teste de busca do Usuário por ID\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlLocal}}/personas/users?email=teste@gmail.com",
+							"host": [
+								"{{urlLocal}}"
+							],
+							"path": [
+								"personas",
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "teste@gmail.com"
+								}
 							]
 						}
 					},
